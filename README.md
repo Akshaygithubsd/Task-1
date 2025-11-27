@@ -1,6 +1,6 @@
 # Flask + Firestore Customer Management System
 
-A complete Flask application that demonstrates CRUD (Create, Read, Update, Delete) operations with Google Cloud Firestore.
+This is a complete Flask application that demonstrates CRUD (Create, Read, Update, Delete) operations with Google Cloud Firestore.
 
 ## Features
 
@@ -99,53 +99,12 @@ python app.py
 
 The application will start on `http://localhost:5000`
 
-## Usage
-
-### Web Interface
-
-1. **View All Customers**: Navigate to the home page (`/`)
-2. **Add Customer**: Click "Add New Customer" button
-3. **Search Customers**: Use the search bar to filter by name or email
-4. **Edit Customer**: Click "Edit" button next to any customer
-5. **Delete Customer**: Click "Delete" button (with confirmation)
-
-### API Endpoints
-
-The application also provides REST API endpoints:
 
 #### Get All Customers
 ```bash
 GET /api/customers
 ```
 
-#### Create Customer
-```bash
-POST /api/customers
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "phone": "+1234567890"
-}
-```
-
-#### Update Customer
-```bash
-PUT /api/customers/{customer_id}
-Content-Type: application/json
-
-{
-  "name": "John Doe Updated",
-  "email": "john.updated@example.com",
-  "phone": "+1234567890"
-}
-```
-
-#### Delete Customer
-```bash
-DELETE /api/customers/{customer_id}
-```
 
 ## Firestore Database Structure
 
@@ -174,36 +133,4 @@ Task 2/
     └── edit_customer.html # Edit customer form
 ```
 
-## Troubleshooting
-
-### Error: "Could not automatically determine credentials"
-
-**Solution**: Make sure you've set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to your service account key file.
-
-### Error: "Permission denied"
-
-**Solution**: Ensure your service account has the necessary Firestore permissions (Cloud Datastore User or Firestore User role).
-
-### Error: "Project not found"
-
-**Solution**: Verify that your Google Cloud project ID is correct and Firestore is enabled for that project.
-
-### Error: "The database (default) does not exist"
-
-**Solution**: This is a common error! You need to **create the Firestore database instance** first:
-1. Visit: https://console.cloud.google.com/firestore
-2. Or use the direct link from the error message (e.g., `https://console.cloud.google.com/datastore/setup?project=task-479419`)
-3. Click "Create Database"
-4. Select **Native Mode** (not Datastore Mode)
-5. Choose a location
-6. Click "Create"
-7. Wait for the database to be created (usually takes 1-2 minutes)
-8. Then restart your Flask application
-
-## Security Notes
-
-- Never commit your service account key file to version control
-- Use environment variables for sensitive configuration
-- Change the `SECRET_KEY` in production
-- Consider using Firestore security rules for production deployments
 
